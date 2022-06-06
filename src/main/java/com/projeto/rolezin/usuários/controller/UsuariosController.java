@@ -50,7 +50,7 @@ public class UsuariosController {
     }
 
     @DeleteMapping("/{Id}")
-    public ResponseEntity<void> DeletarUsuario(@PathVariable("Id") Long Id){
+    public ResponseEntity<?> DeletarUsuario(@PathVariable("Id") Long Id){
 
         if (!usuariosRepository.existsById(Id)) {
             return ResponseEntity.notFound().build();
