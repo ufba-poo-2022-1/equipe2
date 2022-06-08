@@ -26,34 +26,34 @@ public class UsuariosModel {
     @NotNull(message = "Digite seu nome")
     @NotEmpty(message = "Digite seu nome")
     @Length(max = 150,message = "Quantidade de caracteres excedida")
-    private String Nome;
+    private String nome;
 
     @NotNull(message = "Digite seu nome")
     @NotEmpty(message = "Digite seu nome")
     @Email(message = "email inválido")
-    private String Email;
+    private String email;
 
     @NotNull(message = "Digite seu nome")
     @NotEmpty(message = "Digite seu nome")
-    private String Login;
+    private String login;
 
     @NotNull(message = "Digite seu nome")
     @NotEmpty(message = "Digite seu nome")
-    private String Senha;
+    private String senha;
 
     @NotEmpty(message = "Não é possível prosseguir com a criação da conta")
-    private Boolean Verificada;
+    private Boolean verificada;
 
     @NotNull(message = "Digite seu nome")
     @NotEmpty(message = "Digite seu nome")
-    private String Estado;
+    private String estado;
 
     @NotNull(message = "Digite seu nome")
     @NotEmpty(message = "Digite seu nome")
-    private String Cidade;
+    private String cidade;
 
     @NotNull(message = "Digite seu nome")
     @NotEmpty(message = "Digite seu nome")
-    private String Bairro;
+    private String bairro;
 }
 
