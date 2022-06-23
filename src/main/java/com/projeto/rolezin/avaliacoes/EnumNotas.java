@@ -1,3 +1,4 @@
+
 package com.projeto.rolezin.avaliacoes;
 
 public enum EnumNotas {

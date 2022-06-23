@@ -8,16 +8,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import javax.validation.Valid;
 import java.util.List;
+
+
 
 @RestController
 @RequestMapping("/eventos")
 public class EventosController {
-
-    EventosRepository eventosRepository;
-    EndpointUtils endpointUtils;
-
+EventosRepository eventosRepository;
+EndpointUtils endpointUtils;
     @Autowired
     public EventosController(EventosRepository eventosRepository,  EndpointUtils endpointUtils ){
         this.eventosRepository = eventosRepository;

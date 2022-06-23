@@ -52,3 +52,4 @@ public class AvaliacoesController {
         return ResponseEntity.noContent().build();
     }
 }
+
