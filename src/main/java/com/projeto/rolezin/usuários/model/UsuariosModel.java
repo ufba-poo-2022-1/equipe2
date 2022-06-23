@@ -11,49 +11,49 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name="usuarios")
-public class UsuariosModel {
+public class UsuariosModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @NotNull(message = "Digite seu nome")
-    @NotEmpty(message = "Digite seu nome")
+    @NotNull(message = "Campo nao pode estar vazio")
+    @NotEmpty(message = "Campo nao pode estar vazio")
     @Length(max = 150,message = "Quantidade de caracteres excedida")
     private String nome;
 
-    @NotNull(message = "Digite seu nome")
-    @NotEmpty(message = "Digite seu nome")
+    @NotNull(message = "Campo nao pode estar vazio")
+    @NotEmpty(message = "Campo nao pode estar vazio")
     @Email(message = "email inválido")
     private String email;
 
-    @NotNull(message = "Digite seu nome")
-    @NotEmpty(message = "Digite seu nome")
+    @NotNull(message = "Campo nao pode estar vazio")
+    @NotEmpty(message = "Campo nao pode estar vazio")
     private String login;
 
-    @NotNull(message = "Digite seu nome")
-    @NotEmpty(message = "Digite seu nome")
+    @NotNull(message = "Campo nao pode estar vazio")
+    @NotEmpty(message = "Campo nao pode estar vazio")
     private String senha;
 
-    @NotEmpty(message = "Não é possível prosseguir com a criação da conta")
     private Boolean verificada;
 
-    @NotNull(message = "Digite seu nome")
-    @NotEmpty(message = "Digite seu nome")
+    @NotNull(message = "Campo nao pode estar vazio")
+    @NotEmpty(message = "Campo nao pode estar vazio")
     private String estado;
 
-    @NotNull(message = "Digite seu nome")
-    @NotEmpty(message = "Digite seu nome")
+    @NotNull(message = "Campo nao pode estar vazio")
+    @NotEmpty(message = "Campo nao pode estar vazio")
     private String cidade;
 
-    @NotNull(message = "Digite seu nome")
-    @NotEmpty(message = "Digite seu nome")
+    @NotNull(message = "Campo nao pode estar vazio")
+    @NotEmpty(message = "Campo nao pode estar vazio")
     private String bairro;
 }
 

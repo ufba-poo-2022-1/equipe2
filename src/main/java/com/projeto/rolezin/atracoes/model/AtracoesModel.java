@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -22,8 +21,8 @@ public class AtracoesModel {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "horario")
-    private Date horario;
+    @Column(columnDefinition = "TIME NOT NULL" ,name = "horario")
+    private String horario;
 
     @Column(name = "tipo")
     private String tipo;

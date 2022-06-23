@@ -2,7 +2,16 @@ package com.projeto.rolezin.eventos.repository;
 
 import com.projeto.rolezin.eventos.model.EventosModel;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 public interface EventosRepository extends JpaRepository<EventosModel, Long> {
 
+    @Query("select e from EventosModel e where e.nome like concat('%', ?1, '%')")
+    List<EventosModel> findEventoByNomeContains(String nome);
+
+
+    @Query("select e from EventosModel e where e.categoria like concat('%', ?1, '%')")
+    List<EventosModel> findEventoByCategoriaContains(String categoria);
 }

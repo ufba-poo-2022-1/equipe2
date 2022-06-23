@@ -2,7 +2,7 @@ package com.projeto.rolezin.usuários.controller;
 
 import com.projeto.rolezin.usuários.model.UsuariosModel;
 import com.projeto.rolezin.usuários.repository.UsuariosRepository;
-import org.apache.coyote.Response;
+import com.projeto.rolezin.usuários.request.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +28,20 @@ public class UsuariosController {
     public UsuariosModel ChamarUsuario(@PathVariable("Id") Long Id){
         return this.usuariosRepository.findById(Id).
                 orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário não encontrado"));
+    }
+
+    @GetMapping("/login")
+    public UsuariosModel login(@RequestBody LoginRequest loginRequest ){
+
+        try {
+
+            return this.usuariosRepository.findByLoginAndSenha(loginRequest.getLogin(), loginRequest.getSenha());
+
+        } catch (ResponseStatusException error) {
+
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário não encontrado");
+        }
+
     }
 
     @PostMapping

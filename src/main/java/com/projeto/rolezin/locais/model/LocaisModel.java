@@ -1,6 +1,5 @@
 package com.projeto.rolezin.locais.model;
 
-import com.projeto.rolezin.eventos.model.EventosModel;
 import com.projeto.rolezin.usuários.model.UsuariosModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,4 +29,5 @@ public class LocaisModel {
 
     @ManyToOne(optional = false)
     private UsuariosModel usuario;
+
 }
