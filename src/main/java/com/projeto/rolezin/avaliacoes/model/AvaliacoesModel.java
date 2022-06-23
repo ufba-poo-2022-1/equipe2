@@ -6,8 +6,10 @@ import com.projeto.rolezin.usuários.model.UsuariosModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 @Data
@@ -21,6 +23,7 @@ public class AvaliacoesModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAvaliacoes;
 
+    @NotNull(message = "Campo nao pode estar vazio")
     @Column(columnDefinition = "text", name = "avaliacao")
     private String avaliacao;
 
