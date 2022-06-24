@@ -2,6 +2,7 @@
 package com.projeto.rolezin.avaliacoes;
 
 public enum EnumNotas {
+    NOTA0(0),
     NOTA1(1),
     NOTA2(2),
     NOTA3(3),
@@ -17,4 +18,5 @@ public enum EnumNotas {
     public int getValorNota() {
         return valorNota;
     }
+
 }
