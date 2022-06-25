@@ -4,6 +4,15 @@ plugins {
 	id 'java'
 }
 
+jar {
+	manifest {
+		attributes(
+
+				'Main-Class': 'com.projeto.rolezin.RolezinApplication'
+		)
+	}
+}
+
 group = 'com.projeto'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -11,19 +20,6 @@ sourceCompatibility = '11'
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
-	}
-}
-
-plugins {
-	id 'java'
-}
-
-jar {
-	manifest {
-		attributes(
-
-				'Main-Class': 'com.projeto.rolezin.RolezinApplication'
-		)
 	}
 }
 
