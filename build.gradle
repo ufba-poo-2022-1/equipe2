@@ -14,12 +14,6 @@ jar {
 	}
 }
 
-task stage(dependsOn: ['build', 'clean'], group: 'build') {
-	finalizedBy('installDist')
-}
-
-tasks.findByName("build")?.mustRunAfter('clean')
-
 group = 'com.projeto'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
