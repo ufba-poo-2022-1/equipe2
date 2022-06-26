@@ -40,7 +40,7 @@ public class AtracoesController {
 
     }
 
-    @PatchMapping
+    @PatchMapping(path = "{id}")
     public ResponseEntity<?> AtualizarAtracao(@PathVariable("id") Long id, @RequestBody AtracoesModel atracao) {
 
         if (!atracoesRepository.existsById(id)) {

@@ -43,25 +43,28 @@ public class LocaisController {
 
     }
 
-    @PatchMapping
+    @PatchMapping(path = "{id}")
     public ResponseEntity<?> AtualizarLocal(@PathVariable("id") Long id, @RequestBody LocaisModel local) {
 
         if (!locaisRepository.existsById(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        locaisRepository.save(local);
-        return new ResponseEntity<>(HttpStatus.OK);
+        local.setIdLocais(id);
+
+        local = locaisRepository.save(local);
+
+        return ResponseEntity.ok(local);
     }
 
-    @DeleteMapping(path = {"id"})
-    public ResponseEntity<?> DeletarLocal(@PathVariable("id") Long id){
+    @DeleteMapping(path = "{id}")
+    public ResponseEntity<?> DeletarLocais(@PathVariable("id") Long id){
 
         if (!locaisRepository.existsById(id)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
 
         locaisRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 }

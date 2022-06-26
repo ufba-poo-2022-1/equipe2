@@ -2,7 +2,8 @@ package com.projeto.rolezin.usuários.controller;
 
 import com.projeto.rolezin.usuários.model.UsuariosModel;
 import com.projeto.rolezin.usuários.repository.UsuariosRepository;
-import org.apache.coyote.Response;
+import com.projeto.rolezin.usuários.request.LoginRequest;
+import com.projeto.rolezin.utils.EndpointUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,9 @@ public class UsuariosController {
     @Autowired
     UsuariosRepository usuariosRepository;
 
+    @Autowired
+    EndpointUtils endpointUtils;
+
     @GetMapping
     public List<UsuariosModel> ChecagemDeUsuario(){
         return this.usuariosRepository.findAll();
@@ -27,7 +31,15 @@ public class UsuariosController {
     @GetMapping("/{Id}")
     public UsuariosModel ChamarUsuario(@PathVariable("Id") Long Id){
         return this.usuariosRepository.findById(Id).
-                orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário não encontrado"));
+                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest ){
+
+        return endpointUtils.returnObjectOrNotFound(this.usuariosRepository.findByLoginAndSenha(loginRequest.getLogin(), loginRequest.getSenha()));
+
+
     }
 
     @PostMapping
