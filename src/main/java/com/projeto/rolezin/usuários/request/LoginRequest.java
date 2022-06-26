@@ -1,5 +1,7 @@
 package com.projeto.rolezin.usuários.request;
 
+import org.springframework.stereotype.Service;
+
 public class LoginRequest {
 
     private String login;

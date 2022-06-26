@@ -14,7 +14,7 @@ jar {
 	}
 }
 
-group = 'com.projeto'
+group = 'com.projeto.rolezin'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 

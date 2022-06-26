@@ -18,5 +18,5 @@ public enum EnumNotas {
     public int getValorNota() {
         return valorNota;
     }
-
+    
 }
