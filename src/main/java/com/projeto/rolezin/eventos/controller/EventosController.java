@@ -59,11 +59,19 @@ EndpointUtils endpointUtils;
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        evento.setIdEventos(id);
+        try {
 
-        evento = eventosRepository.save(evento);
+            evento.setIdEventos(id);
 
-        return ResponseEntity.ok(evento);
+            evento = eventosRepository.save(evento);
+
+            return ResponseEntity.ok(evento);
+
+        } catch (Exception e) {
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     @DeleteMapping(path = "{id}")
