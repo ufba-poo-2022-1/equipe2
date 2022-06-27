@@ -44,12 +44,20 @@ public class AtracoesController {
     @PatchMapping(path = "{id}")
     public ResponseEntity<?> AtualizarAtracao(@PathVariable("id") Long id, @RequestBody AtracoesModel atracao) {
 
-        if (!atracoesRepository.existsById(id)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        try{
 
-        atracoesRepository.save(atracao);
-        return new ResponseEntity<>(HttpStatus.OK);
+            if (!atracoesRepository.existsById(id)) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            atracao.setIdAtracoes(id);
+            atracao = atracoesRepository.save(atracao);
+            return ResponseEntity.ok(atracao);
+
+        } catch (Exception e) {
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
+        }
     }
 
     @DeleteMapping(path = {"id"})
