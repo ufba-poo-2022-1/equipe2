@@ -67,7 +67,7 @@ EndpointUtils endpointUtils;
 
             return ResponseEntity.ok(evento);
 
-        } catch (Exception e) {
+        } catch (UnsupportedOperationException e) {
 
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

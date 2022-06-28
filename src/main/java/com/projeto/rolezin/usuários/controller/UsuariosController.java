@@ -64,7 +64,7 @@ public class UsuariosController {
 
             return ResponseEntity.ok(user);
 
-        } catch (Exception e) {
+        } catch (UnsupportedOperationException e) {
 
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 

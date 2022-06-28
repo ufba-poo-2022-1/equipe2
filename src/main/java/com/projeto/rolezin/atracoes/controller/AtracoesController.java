@@ -53,7 +53,7 @@ public class AtracoesController {
             atracao = atracoesRepository.save(atracao);
             return ResponseEntity.ok(atracao);
 
-        } catch (Exception e) {
+        } catch (UnsupportedOperationException e) {
 
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
