@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -57,7 +56,7 @@ public class LocaisController {
 
             return ResponseEntity.ok(local);
 
-        } catch (Exception e) {
+        } catch (UnsupportedOperationException e) {
 
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
