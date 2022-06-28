@@ -9,9 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/locais")
 public class LocaisController {
@@ -46,15 +45,22 @@ public class LocaisController {
     @PatchMapping(path = "{id}")
     public ResponseEntity<?> AtualizarLocal(@PathVariable("id") Long id, @RequestBody LocaisModel local) {
 
-        if (!locaisRepository.existsById(id)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        try {
+            if (!locaisRepository.existsById(id)) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+
+            local.setIdLocais(id);
+
+            local = locaisRepository.save(local);
+
+            return ResponseEntity.ok(local);
+
+        } catch (UnsupportedOperationException e) {
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
         }
-
-        local.setIdLocais(id);
-
-        local = locaisRepository.save(local);
-
-        return ResponseEntity.ok(local);
     }
 
     @DeleteMapping(path = "{id}")

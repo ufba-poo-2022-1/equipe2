@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-
-
+@CrossOrigin
 @RestController
 @RequestMapping("/eventos")
 public class EventosController {
@@ -60,11 +59,19 @@ EndpointUtils endpointUtils;
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        evento.setIdEventos(id);
+        try {
 
-        evento = eventosRepository.save(evento);
+            evento.setIdEventos(id);
 
-        return ResponseEntity.ok(evento);
+            evento = eventosRepository.save(evento);
+
+            return ResponseEntity.ok(evento);
+
+        } catch (UnsupportedOperationException e) {
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     @DeleteMapping(path = "{id}")

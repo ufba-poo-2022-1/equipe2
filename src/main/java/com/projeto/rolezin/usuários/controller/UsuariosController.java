@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/usuarios")
 public class UsuariosController {
@@ -50,15 +51,24 @@ public class UsuariosController {
 
     @PatchMapping("/{Id}")
     public ResponseEntity<UsuariosModel> AtualizarUsuario(@PathVariable("Id") Long Id, @RequestBody UsuariosModel user) {
-        if (!usuariosRepository.existsById(Id)) {
-            return ResponseEntity.notFound().build();
+
+        try {
+
+            if (!usuariosRepository.existsById(Id)) {
+                return ResponseEntity.notFound().build();
+            }
+
+            user.setUserId(Id);
+
+            user=usuariosRepository.save(user);
+
+            return ResponseEntity.ok(user);
+
+        } catch (UnsupportedOperationException e) {
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
         }
-
-        user.setUserId(Id);
-
-        user=usuariosRepository.save(user);
-
-        return ResponseEntity.ok(user);
     }
 
     @DeleteMapping("/{Id}")
